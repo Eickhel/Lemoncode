@@ -8,8 +8,30 @@
 body {
   font-family: "Raleway", sans-serif;
   color: white;
+  margin: 40px;
 }
 
+.main {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: minmax(200px, 1fr) 200px 200px;
+  background-color: #fff;
+  color: #444;
+}
+
+.box {
+  background-color: slategray;
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 2em;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+// Lab 1
 .reds,
 .greens,
 .blues {
@@ -22,3 +44,5 @@ body {
 @include setColor("red", $redColor);
 @include setColor("green", $greenColor);
 @include setColor("blue", $blueColor);
+
+// Lab 2
