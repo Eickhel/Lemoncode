@@ -13,22 +13,38 @@ menu, nav, section, summary, time, mark, audio, video {
   vertical-align: baseline;
   background: transparent; }
 
+.baseColor {
+  background-color: #ff0000; }
+
+.importantColor {
+  background-color: #660000; }
+
+.warningColor {
+  background-color: #ffc0cb; }
+
+.mainFont {
+  font-family: Arial, Helvetica, sans-serif; }
+
+.secondaryFont {
+  font-family: monospace; }
+
+.radius {
+  border-radius: 0px; }
+
+.shadow {
+  box-shadow: -15px 15px 20px rgba(0, 0, 0, 0.7); }
+
 body {
-  font-family: "Raleway", sans-serif;
-  color: white;
-  background-color: white;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 1.5em;
   margin: 40px; }
 
-.main {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: minmax(200px, 1fr) 200px 200px; }
-
 .box {
-  background-color: slategray;
-  border-radius: 5px;
   padding: 20px;
-  font-size: 2em; }
+  width: 120px;
+  height: 70px;
+  padding: 25px;
+  border: solid gray 1px; }
 
-.clickable {
-  cursor: pointer; }
+p {
+  padding: 20px 0; }

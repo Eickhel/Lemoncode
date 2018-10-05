@@ -1,0 +1,17 @@
+.baseColor {
+  background-color: #0000FF; }
+
+.importantColor {
+  background-color: #000066; }
+
+.warningColor {
+  background-color: #00FFFF; }
+
+.mainFont, .secondaryFont {
+  font-family: "Times New Roman", Times, serif; }
+
+.radius {
+  border-radius: 10px; }
+
+.shadow {
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.7); }
