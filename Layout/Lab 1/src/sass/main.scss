@@ -1,0 +1,24 @@
+@import "https://fonts.googleapis.com/css?family=Raleway";
+
+@import "init";
+@import "layout";
+@import "colors";
+@import "mixins";
+
+body {
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
+
+.reds,
+.greens,
+.blues {
+  @include base-layout;
+
+  line-height: 200px;
+  text-align: center;
+}
+
+@include setColor("red", $redColor);
+@include setColor("green", $greenColor);
+@include setColor("blue", $blueColor);
