@@ -64,36 +64,33 @@ article {
   }
 }
 
-// Footer
-footer {
+// Navigation
+nav {
   display: flex;
   order: 1;
-}
-
-footer > nav {
-  display: flex;
-  flex: 1;
 }
 
 nav > ul {
   display: flex;
   justify-content: space-evenly;
-  height: 15px;
+  height: 20px;
   width: 100%;
   list-style: none;
 }
 
 nav > ul > li {
   font-family: "Courier New", Courier, monospace;
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   border: 2px solid #d3d3d3;
   color: #666;
   cursor: pointer;
-  line-height: 15px;
+  line-height: 20px;
   text-align: center;
   width: 100%;
   padding: 0 5px;
 }
+
+@include setNavColors();
 
 @media screen and (max-width: 420px) {
   @include smallResolution;

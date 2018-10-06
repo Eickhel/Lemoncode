@@ -1,0 +1,39 @@
+@mixin smallResolution {
+  // Header
+  header {
+    order: 0;
+  }
+
+  .lemoncode {
+    display: none;
+  }
+
+  // Main content
+  #main {
+    flex: 1;
+    order: 1;
+  }
+
+  // Navigation
+  nav {
+    order: 2;
+  }
+  nav > ul {
+    height: 15px;
+  }
+  nav > ul > li {
+    font-size: 2.3vw;
+    line-height: 15px;
+  }
+}
+
+@mixin setNavColors() {
+  $colors: #586ba4 #324376 #f5dd90 #f68e5f #f76c5e #394655 #0975b8;
+
+  @for $i from 1 through 7 {
+    .nav#{$i}:hover {
+      color: white;
+      background-color: nth($colors, $i);
+    }
+  }
+}
