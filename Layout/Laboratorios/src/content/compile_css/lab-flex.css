@@ -22,18 +22,12 @@ body {
   min-height: 100vh;
   flex-direction: column; }
 
-#main {
-  margin: 0;
-  padding: 0;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row;
-  flex-flow: row; }
-
 header {
   display: flex;
   background: #ffc0cb;
-  height: 20px; }
+  height: 20px;
+  padding: 2px 0;
+  order: 0; }
 
 .logo {
   flex-grow: 1;
@@ -48,18 +42,42 @@ header {
   text-align: right;
   padding-right: 15px; }
 
-nav {
+#main {
+  display: flex;
+  flex-flow: row;
+  order: 2; }
+
+aside > ul {
+  list-style: none;
+  padding: 10px; }
+
+aside > ul > li {
+  padding: 10px; }
+
+article {
+  padding: 20px;
+  line-height: 1.5em; }
+  article h1 {
+    font-size: 2rem;
+    padding-bottom: 10px;
+    line-height: 2rem; }
+
+footer {
+  display: flex;
+  order: 1; }
+
+footer > nav {
   display: flex;
   flex: 1; }
 
-ul {
+nav > ul {
   display: flex;
   justify-content: space-evenly;
   height: 15px;
   width: 100%;
   list-style: none; }
 
-li {
+nav > ul > li {
   font-family: "Courier New", Courier, monospace;
   font-size: 0.5rem;
   border: 2px solid #d3d3d3;
@@ -70,10 +88,15 @@ li {
   width: 100%;
   padding: 0 5px; }
 
-@media screen and (max-width: 335px) {
+@media screen and (max-width: 420px) {
+  header {
+    order: 0; }
   .lemoncode {
     display: none; }
   #main {
-    flex: 1; }
-  li {
+    flex: 1;
+    order: 1; }
+  footer {
+    order: 2; }
+  footer > li {
     font-size: 2.3vw; } }
