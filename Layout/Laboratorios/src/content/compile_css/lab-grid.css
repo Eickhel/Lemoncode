@@ -53,7 +53,7 @@ body {
     grid-template-columns: 0.1fr 0.5fr 1fr 0.1fr;
     grid-template-rows: 50vh 50vh; } }
 
-@media screen and (min-width: 54rem) and (max-width: 73.3rem) {
+@media screen and (min-width: 48rem) and (max-width: 73.3rem) {
   .main-content {
     display: grid;
     grid-template-areas: "header" "contentA" "contentB";

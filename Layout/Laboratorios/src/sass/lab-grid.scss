@@ -46,7 +46,7 @@ body {
   }
 }
 
-@media screen and (min-width: 54rem) and (max-width: 73.3rem) {
+@media screen and (min-width: 48rem) and (max-width: 73.3rem) {
   .main-content {
     @include medium-resolution();
   }
