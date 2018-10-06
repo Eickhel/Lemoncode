@@ -1,0 +1,65 @@
+@mixin base-grid-definition {
+  display: grid;
+}
+
+@mixin bigTemplate {
+  grid-template-areas:
+    ". header contentA ."
+    ". header contentB .";
+}
+
+@mixin smallTemplate {
+  grid-template-areas:
+    "header"
+    "contentA"
+    "contentB";
+}
+
+@mixin extra-large-resolution {
+  @include base-grid-definition();
+  @include bigTemplate();
+
+  grid-template-columns: 0.3fr 0.5fr 1fr 0.3fr;
+  grid-template-rows: 50vh 50vh;
+}
+
+@mixin large-resolution {
+  @include base-grid-definition();
+  @include bigTemplate();
+
+  grid-template-columns: 0.1fr 0.5fr 1fr 0.1fr;
+  grid-template-rows: 50vh 50vh;
+}
+
+@mixin medium-resolution {
+  @include base-grid-definition();
+  @include smallTemplate();
+
+  .header {
+    flex-direction: row;
+
+    div {
+      margin: auto 120px;
+    }
+  }
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 15vh 42.5vh 42.5vh;
+}
+
+@mixin small-resolution {
+  @include base-grid-definition();
+  @include smallTemplate();
+
+  .header {
+    flex-direction: row;
+    justify-content: flex-start;
+
+    div {
+      margin: 0;
+    }
+  }
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 4vh 48vh 48vh;
+}

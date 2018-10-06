@@ -1,0 +1,79 @@
+@import "https://fonts.googleapis.com/css?family=Raleway";
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup,
+menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+.main-display {
+  flex-grow: 1; }
+
+.header {
+  grid-area: header;
+  background-color: #ffc0cb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+  .header div {
+    margin: 80px 0; }
+
+.contentA {
+  grid-area: contentA;
+  background-color: #fffe00; }
+
+.contentB {
+  grid-area: contentB;
+  background-color: #0000fe; }
+
+@media screen and (min-width: 80rem) {
+  .main-content {
+    display: grid;
+    grid-template-areas: ". header contentA ." ". header contentB .";
+    grid-template-columns: 0.3fr 0.5fr 1fr 0.3fr;
+    grid-template-rows: 50vh 50vh; } }
+
+@media screen and (min-width: 73.4rem) and (max-width: 79.8rem) {
+  .main-content {
+    display: grid;
+    grid-template-areas: ". header contentA ." ". header contentB .";
+    grid-template-columns: 0.1fr 0.5fr 1fr 0.1fr;
+    grid-template-rows: 50vh 50vh; } }
+
+@media screen and (min-width: 54rem) and (max-width: 73.3rem) {
+  .main-content {
+    display: grid;
+    grid-template-areas: "header" "contentA" "contentB";
+    grid-template-columns: 1fr;
+    grid-template-rows: 15vh 42.5vh 42.5vh; }
+    .main-content .header {
+      flex-direction: row; }
+      .main-content .header div {
+        margin: auto 120px; } }
+
+@media screen and (max-width: 47.9rem) {
+  .main-content {
+    display: grid;
+    grid-template-areas: "header" "contentA" "contentB";
+    grid-template-columns: 1fr;
+    grid-template-rows: 4vh 48vh 48vh; }
+    .main-content .header {
+      flex-direction: row;
+      justify-content: flex-start; }
+      .main-content .header div {
+        margin: 0; }
+    .main-content .main-content-item {
+      flex-grow: 1; } }
