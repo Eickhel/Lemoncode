@@ -1,7 +1,7 @@
 # Práctica modulo 3 Webpack
 
 ## Implementar una aplicación simple que:
-- Tenga el bundling montado con webpack.
+- [Paso 1:](https://github.com/Eickhel/Lemoncode/commit/ee9f5a6db20f12223450f7f1fdf8db96868e697f) Tenga el bundling montado con webpack.
 - Muestre un logo (si queréis el de lemoncode).
 - Este montada con typescript.
 - Tenga el texto de hola mundo estilado con SASS.
