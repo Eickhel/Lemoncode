@@ -5,12 +5,28 @@ var basePath = __dirname; // viene de base
 
 module.exports = {
   context: path.join(basePath, 'src'),
-  entry: ['@babel/polyfill', './index.js'],
+  resolve: {
+    extensions: ['.js', '.ts']
+  },
+  devtool: 'inline-source-map',
+  entry: {
+    app: './index.ts',
+    vendor: ['@babel/polyfill']
+  },
   output: {
-    filename: '[name].[chunkhash].bundle.js'
+    filename: '[name].[hash].bundle.js'
   },
   module: {
     rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        loader: 'awesome-typescript-loader',
+        options: {
+          useBabel: true,
+          babelCore: '@babel/core' // needed for Babel 7
+        }
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
