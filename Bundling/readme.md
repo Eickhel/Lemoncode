@@ -3,7 +3,7 @@
 ## Implementar una aplicación simple que:
 - [Paso 1:](https://github.com/Eickhel/Lemoncode/commit/ee9f5a6db20f12223450f7f1fdf8db96868e697f) Tenga el bundling montado con webpack.
 - [Paso 2:](https://github.com/Eickhel/Lemoncode/commit/7cb218d4f9a3ab49423c8c1ecbd4fb44699d3a3c) Muestre un logo (si queréis el de lemoncode).
-- [Paso 3:]() Este montada con typescript.
+- [Paso 3:](https://github.com/Eickhel/Lemoncode/commit/ca4fc7277c764d2ebe610bb7dcfd4a79cffe5bf3) Este montada con typescript.
 - Tenga el texto de hola mundo estilado con SASS.
 
 ## Bonus points:
