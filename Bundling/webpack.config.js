@@ -7,11 +7,11 @@ var basePath = __dirname; // viene de base
 module.exports = {
   context: path.join(basePath, 'src'),
   resolve: {
-    extensions: ['.js', '.ts']
+    extensions: ['.js', '.ts', '.tsx']
   },
   devtool: 'inline-source-map',
   entry: {
-    app: './index.ts',
+    app: './index.tsx',
     appStyles: './sass/appStyle.scss',
     vendor: ['@babel/polyfill']
   },

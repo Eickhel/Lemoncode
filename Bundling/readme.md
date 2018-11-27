@@ -7,7 +7,7 @@
 - [Paso 4:](https://github.com/Eickhel/Lemoncode/commit/2c54adcbdba19d6db51645c7e5e1964fe6e43f4e) Tenga el texto de hola mundo estilado con SASS.
 
 ## Bonus points:
-- Muestra un hola mundo desarrollado con React.
+- [Bonus 1:]() Muestra un hola mundo desarrollado con React.
 - Montar la versión de producción.
     - Pista: https://webpack.js.org/guides/production/
 - Tener variables de entorno para desarrollo o producción:
