@@ -1,4 +1,5 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 var path = require('path');
 var basePath = __dirname; // viene de base
@@ -11,6 +12,7 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: {
     app: './index.ts',
+    appStyles: './sass/appStyle.scss',
     vendor: ['@babel/polyfill']
   },
   output: {
@@ -33,6 +35,21 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader'
+          }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      },
+      {
         test: /\.(png|jpg)$/,
         exclude: /node_modules/,
         loader: 'url-loader?limit=2000'
@@ -47,6 +64,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     })
   ]
 };
