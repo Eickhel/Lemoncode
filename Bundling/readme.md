@@ -8,10 +8,10 @@
 
 ## Bonus points:
 - [Bonus 1:](https://github.com/Eickhel/Lemoncode/commit/7ca3fb258057293a53293f04b1b345889d0494cb) Muestra un hola mundo desarrollado con React.
-- Montar la versión de producción.
+- Bonus 2: [Part 1](https://github.com/Eickhel/Lemoncode/commit/2b2f05eb75ec5dd837eab59532a6816295cc6e94) - [Part 2](https://github.com/Eickhel/Lemoncode/commit/ba833c5476accb88a9d8ce675fda693367ee6acf) Montar la versión de producción.
     - Pista: https://webpack.js.org/guides/production/
-- Tener variables de entorno para desarrollo o producción:
-    - Pista: https://webpack.js.org/guides/environment-variables/).
+- [Bonus 3:]() Tener variables de entorno para desarrollo o producción:
+    - Pista: https://webpack.js.org/guides/environment-variables/
 - Tener una medida de cuanto mide cada librería:
     - Pista: mirar BundleAnalyzerPlugin.
 - Montar lo mismo con Parcel.

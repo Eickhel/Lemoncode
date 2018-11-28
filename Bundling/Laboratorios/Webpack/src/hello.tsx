@@ -5,7 +5,7 @@ export const HelloComponent = () => (
   <>
     <div className={'parent'}>
       <div className={'child'}>
-        <p>Hola mundo</p>
+        <p>Hola mundo from {process.env.NODE_ENV}</p>
         <img src={img} alt='Lemoncode logo' />
       </div>
     </div>

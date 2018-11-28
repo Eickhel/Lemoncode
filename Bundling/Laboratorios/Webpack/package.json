@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js --inline",
-    "build": "rimraf dist/* && webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --env.NODE_ENV=dev --config webpack.dev.js --inline --hot",
+    "build": "rimraf dist/* && webpack --env.NODE_ENV=prod --config webpack.common.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +20,7 @@
     "@types/react-dom": "^16.0.11",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.4",
+    "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
     "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
