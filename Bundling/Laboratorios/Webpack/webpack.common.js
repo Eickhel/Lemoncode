@@ -9,7 +9,6 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx']
   },
-  devtool: 'inline-source-map',
   entry: {
     app: './index.tsx',
     appStyles: './sass/appStyle.scss',
