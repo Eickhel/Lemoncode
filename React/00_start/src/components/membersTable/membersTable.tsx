@@ -16,6 +16,11 @@ const styles = theme =>
     inline: {
       display: 'inline'
     },
+    textField: {
+      margin: '8px',
+      width: '400px',
+      display: 'block'
+    },
     button: {
       margin: theme.spacing.unit
     }
@@ -61,7 +66,7 @@ export class MembersList extends React.Component<Props, State> {
         <TextField
           id='orgName'
           label="Organization's name"
-          style={{ margin: 8, width: '400px', display: 'block' }}
+          className={classes.textField}
           value={this.state.organizationName}
           onChange={this.setOrganizationName}
           margin='normal'
@@ -89,13 +94,11 @@ export class MembersList extends React.Component<Props, State> {
         >
           Reset
         </Button>
-        <div className='row'>
-          <List className={classes.root}>
-            {this.state.members.map((member: MemberEntity) => (
-              <MemberRow key={member.id} member={member} />
-            ))}
-          </List>
-        </div>
+        <List className={classes.root}>
+          {this.state.members.map((member: MemberEntity) => (
+            <MemberRow key={member.id} member={member} />
+          ))}
+        </List>
       </>
     );
   }

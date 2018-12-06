@@ -29,7 +29,7 @@ const MemberItem = (props: Props) => {
           <Avatar alt={props.member.login} src={props.member.avatar_url} />
         </ListItemAvatar>
         <ListItemText primary={props.member.login} />
-      </ListItem>{' '}
+      </ListItem>
     </Paper>
   );
 };
