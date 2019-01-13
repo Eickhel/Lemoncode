@@ -1,24 +1,23 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { createStore, applyMiddleware, compose} from 'redux';
-import reduxThunk from 'redux-thunk';
-import { Provider } from 'react-redux';
-import {reducers} from './reducers';
-import {App} from './app';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
-const nonTypedWindow : any = window;
+import { store } from "./store";
 
-const composeEnhancers = nonTypedWindow.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import { App } from "./pages/app";
 
-const store = createStore(reducers, /* preloadedState, */ composeEnhancers(
-   applyMiddleware(reduxThunk)
-));
-  
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true
+  }
+});
 
 ReactDOM.render(
   <Provider store={store}>
-    <>      
-    <App/>
-    </>
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider>
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById("root")
+);

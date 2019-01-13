@@ -1,10 +1,10 @@
-import { combineReducers} from 'redux';
-import { memberReducer, memberState } from './memberReducer';
+import { combineReducers } from "redux";
+import { MemberListReducer, MemberListState } from "./memberListReducer";
 
-export interface State {  
-  memberReducer : memberState;
-};
+export interface State {
+  memberListReducer: MemberListState;
+}
 
 export const reducers = combineReducers<State>({
-  memberReducer,
+  memberListReducer: MemberListReducer
 });
