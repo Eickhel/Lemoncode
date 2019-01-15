@@ -37,6 +37,6 @@ const resolveMembers = (data: any): MemberEntity[] => {
   return members;
 };
 
-const returnEmpty = (data: any): MemberEntity[] => {
+const returnEmpty = (): MemberEntity[] => {
   return [];
 };
