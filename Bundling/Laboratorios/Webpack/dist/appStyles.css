@@ -1,0 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup,
+menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+.styled {
+  text-shadow: 1px 1px lightgrey;
+  color: black; }
+
+img {
+  display: block;
+  width: 200px;
+  padding: 15px 0px; }
+
+.parent {
+  position: relative;
+  border-radius: 5px;
+  background: #98AFBA;
+  width: 70%;
+  height: 200px;
+  margin: 20px auto; }
+
+.child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #F0FBFF;
+  padding: 15px;
+  border-radius: 5px; }
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: #607d8b;
+  text-align: center; }
+
