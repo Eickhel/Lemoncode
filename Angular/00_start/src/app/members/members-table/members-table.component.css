@@ -1,0 +1,12 @@
+.tableInput {
+  padding: 20px;
+}
+
+.searchField {
+  display: block;
+  width: 200px;
+}
+
+.resetButtonPadding {
+  margin-left: 10px;
+}

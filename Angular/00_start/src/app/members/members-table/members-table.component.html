@@ -1,9 +1,10 @@
-<h2>Members Page</h2>
-<button (click)="loadMembers()">Load</button>
-<table>
-  <thead app-member-head></thead>
-  <tbody>
-    <tr app-member-row [member]="member" *ngFor="let member of members">
-    </tr>
-  </tbody>
-</table>
+<mat-toolbar color="primary">Github's members directory</mat-toolbar>
+<div class="tableInput">
+  <mat-form-field class="searchField">
+    <input matInput type="text" placeholder="Organization name" [(ngModel)]="orgName" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="loadMembers()">LOAD</button>
+  <button mat-raised-button color="warn" (click)="resetMembers()" class="resetButtonPadding">RESET</button>
+</div>
+
+<app-member-row [member]="member" *ngFor="let member of members"></app-member-row>

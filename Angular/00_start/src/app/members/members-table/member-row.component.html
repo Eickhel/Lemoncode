@@ -1,23 +1,8 @@
-<!-- <ng-container>
-  <tr>
-    <td>
-      <img [src]="member.avatar_url" style="max-width:10rem;" />
-    </td>
-    <td>
-      <span>{{member.id}}</span>
-    </td>
-    <td>
-      <span>{{member.login}}</span>
-    </td>
-  </tr>
-</ng-container> -->
-
-<td>
-  <img [src]="member.avatar_url" style="max-width:10rem;" />
-</td>
-<td>
-  <span>{{member.id}}</span>
-</td>
-<td>
-  <span>{{member.login}}</span>
-</td>
+<mat-list>
+  <mat-card class="memberCard" (click)="openURL()">
+    <mat-list-item>
+      <img matListAvatar src="{{ member.avatar_url }}" alt="{{ member.login }}" />
+      <h3 matLine>{{ member.login }}</h3>
+    </mat-list-item>
+  </mat-card>
+</mat-list>
