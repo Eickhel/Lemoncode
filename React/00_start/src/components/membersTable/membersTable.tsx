@@ -4,7 +4,6 @@ import { Button, TextField, List } from '@material-ui/core';
 import { MemberEntity } from '../../model/member';
 import { memberAPI } from '../../api/memberAPI';
 import { MemberRow } from './memberRow';
-import {} from 'core-js';
 
 const styles = theme =>
   createStyles({
@@ -28,19 +27,15 @@ const styles = theme =>
 
 interface Props extends WithStyles<typeof styles> {}
 
-// We define members as a state (the compoment holding this will be a container
-// component)
 interface State {
   organizationName: string;
   members: Array<MemberEntity>;
   buttonDisabled: boolean;
 }
 
-// Nice tsx guide: https://github.com/Microsoft/TypeScript/wiki/JSX
 export class MembersList extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    // set initial state
     this.state = { organizationName: 'lemoncode', members: [], buttonDisabled: false };
   }
 
