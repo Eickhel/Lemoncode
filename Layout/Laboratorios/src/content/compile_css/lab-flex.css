@@ -1,0 +1,129 @@
+@import "https://fonts.googleapis.com/css?family=Raleway";
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup,
+menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  flex-direction: column; }
+
+header {
+  display: flex;
+  background: #ffc0cb;
+  height: 20px;
+  padding: 2px 0;
+  order: 0; }
+
+.logo {
+  flex-grow: 1;
+  padding-left: 15px; }
+
+.lemoncode {
+  flex-grow: 2;
+  text-align: center; }
+
+.user {
+  flex-grow: 1;
+  text-align: right;
+  padding-right: 15px; }
+
+#main {
+  display: flex;
+  flex-flow: row;
+  order: 2; }
+
+aside > ul {
+  list-style: none;
+  padding: 10px; }
+
+aside > ul > li {
+  padding: 10px; }
+
+article {
+  padding: 20px;
+  line-height: 1.5em; }
+  article h1 {
+    font-size: 2rem;
+    padding-bottom: 10px;
+    line-height: 2rem; }
+
+nav {
+  display: flex;
+  order: 1; }
+
+nav > ul {
+  display: flex;
+  justify-content: space-evenly;
+  height: 20px;
+  width: 100%;
+  list-style: none; }
+
+nav > ul > li {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  border: 2px solid #d3d3d3;
+  color: #666;
+  cursor: pointer;
+  line-height: 20px;
+  text-align: center;
+  width: 100%;
+  padding: 0 5px; }
+
+.nav1:hover {
+  color: white;
+  background-color: #586ba4; }
+
+.nav2:hover {
+  color: white;
+  background-color: #324376; }
+
+.nav3:hover {
+  color: white;
+  background-color: #f5dd90; }
+
+.nav4:hover {
+  color: white;
+  background-color: #f68e5f; }
+
+.nav5:hover {
+  color: white;
+  background-color: #f76c5e; }
+
+.nav6:hover {
+  color: white;
+  background-color: #394655; }
+
+.nav7:hover {
+  color: white;
+  background-color: #0975b8; }
+
+@media screen and (max-width: 420px) {
+  header {
+    order: 0; }
+  .lemoncode {
+    display: none; }
+  #main {
+    flex: 1;
+    order: 1; }
+  nav {
+    order: 2; }
+  nav > ul {
+    height: 15px; }
+  nav > ul > li {
+    font-size: 2.3vw;
+    line-height: 15px; } }

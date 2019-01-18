@@ -1,0 +1,63 @@
+@import "init";
+@import "lab-grid-layout";
+
+body {
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main-display {
+  flex-grow: 1;
+}
+
+.header {
+  grid-area: header;
+  background-color: #ffc0cb;
+  display: flex;
+  flex-direction: column;
+  justify-content : space-between;
+
+  div {
+    margin: 80px 0;
+  }
+}
+
+.contentA {
+  grid-area: contentA;
+  background-color: #fffe00;
+}
+
+.contentB {
+  grid-area: contentB;
+  background-color: #0000fe;
+}
+
+@media screen and (min-width: 80rem) {
+  .main-content {
+    @include extra-large-resolution();
+  }
+}
+
+@media screen and (min-width: 73.4rem) and (max-width: 79.8rem) {
+  .main-content {
+    @include large-resolution();
+  }
+}
+
+@media screen and (min-width: 48rem) and (max-width: 73.3rem) {
+  .main-content {
+    @include medium-resolution();
+  }
+}
+
+@media screen and (max-width: 47.9rem) {
+  .main-content {
+    @include small-resolution();
+
+    .main-content-item {
+      flex-grow: 1;
+    }
+  }
+}

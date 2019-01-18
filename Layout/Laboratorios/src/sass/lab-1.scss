@@ -1,0 +1,22 @@
+@import "init";
+@import "lab-1-layout";
+@import "lab-1-colors";
+@import "lab-1-mixins";
+
+body {
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
+
+.reds,
+.greens,
+.blues {
+  @include base-layout;
+
+  line-height: 200px;
+  text-align: center;
+}
+
+@include setColor("red", $redColor);
+@include setColor("green", $greenColor);
+@include setColor("blue", $blueColor);

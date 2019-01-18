@@ -1,0 +1,21 @@
+@import "init";
+@import "lab-2-themeA";
+//@import "lab-2-themeB";
+
+body {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 1.5em;
+  margin: 40px;
+}
+
+.box {
+  padding: 20px;
+  width: 120px;
+  height: 70px;
+  padding: 25px;
+  border: solid gray 1px;
+}
+
+p {
+  padding: 20px 0;
+}

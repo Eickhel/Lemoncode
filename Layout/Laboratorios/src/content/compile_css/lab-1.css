@@ -1,0 +1,191 @@
+@import "https://fonts.googleapis.com/css?family=Raleway";
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup,
+menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  font-family: "Raleway", sans-serif;
+  color: white; }
+
+.reds,
+.greens,
+.blues {
+  display: grid;
+  grid-row-gap: 0.5rem;
+  grid-column-gap: 0.5rem;
+  grid-template-columns: repeat(9, 100px);
+  grid-template-rows: 200px;
+  line-height: 200px;
+  text-align: center; }
+
+.red4 {
+  background-color: #330000; }
+
+.red4::after {
+  content: "Darken 4"; }
+
+.red3 {
+  background-color: #660000; }
+
+.red3::after {
+  content: "Darken 3"; }
+
+.red2 {
+  background-color: #990000; }
+
+.red2::after {
+  content: "Darken 2"; }
+
+.red1 {
+  background-color: #cc0000; }
+
+.red1::after {
+  content: "Darken 1"; }
+
+.red {
+  background-color: #ff0000; }
+
+.red::after {
+  content: "Base color"; }
+
+.red-1 {
+  background-color: #ff3333; }
+
+.red-1::after {
+  content: "Lighten 1"; }
+
+.red-2 {
+  background-color: #ff6666; }
+
+.red-2::after {
+  content: "Lighten 2"; }
+
+.red-3 {
+  background-color: #ff9999; }
+
+.red-3::after {
+  content: "Lighten 3"; }
+
+.red-4 {
+  background-color: #ffcccc; }
+
+.red-4::after {
+  content: "Lighten 4"; }
+
+.green4 {
+  background-color: #003300; }
+
+.green4::after {
+  content: "Darken 4"; }
+
+.green3 {
+  background-color: #006600; }
+
+.green3::after {
+  content: "Darken 3"; }
+
+.green2 {
+  background-color: #009900; }
+
+.green2::after {
+  content: "Darken 2"; }
+
+.green1 {
+  background-color: #00cc00; }
+
+.green1::after {
+  content: "Darken 1"; }
+
+.green {
+  background-color: #00ff00; }
+
+.green::after {
+  content: "Base color"; }
+
+.green-1 {
+  background-color: #33ff33; }
+
+.green-1::after {
+  content: "Lighten 1"; }
+
+.green-2 {
+  background-color: #66ff66; }
+
+.green-2::after {
+  content: "Lighten 2"; }
+
+.green-3 {
+  background-color: #99ff99; }
+
+.green-3::after {
+  content: "Lighten 3"; }
+
+.green-4 {
+  background-color: #ccffcc; }
+
+.green-4::after {
+  content: "Lighten 4"; }
+
+.blue4 {
+  background-color: #000033; }
+
+.blue4::after {
+  content: "Darken 4"; }
+
+.blue3 {
+  background-color: #000066; }
+
+.blue3::after {
+  content: "Darken 3"; }
+
+.blue2 {
+  background-color: #000099; }
+
+.blue2::after {
+  content: "Darken 2"; }
+
+.blue1 {
+  background-color: #0000cc; }
+
+.blue1::after {
+  content: "Darken 1"; }
+
+.blue {
+  background-color: #0000ff; }
+
+.blue::after {
+  content: "Base color"; }
+
+.blue-1 {
+  background-color: #3333ff; }
+
+.blue-1::after {
+  content: "Lighten 1"; }
+
+.blue-2 {
+  background-color: #6666ff; }
+
+.blue-2::after {
+  content: "Lighten 2"; }
+
+.blue-3 {
+  background-color: #9999ff; }
+
+.blue-3::after {
+  content: "Lighten 3"; }
+
+.blue-4 {
+  background-color: #ccccff; }
+
+.blue-4::after {
+  content: "Lighten 4"; }
