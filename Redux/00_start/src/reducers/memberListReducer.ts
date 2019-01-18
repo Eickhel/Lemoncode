@@ -31,9 +31,9 @@ export const MemberListReducer = (
 const handleFetchMembersCompleted = (state: MemberListState, memberList: MemberEntity[]): MemberListState => ({
   ...state,
   memberList
-}); // para hacerlo inmutable copiamos memberList en state con destructuring
+});
 
 const handleClearMembersCompleted = (state: MemberListState, memberList: MemberEntity[]): MemberListState => ({
   ...state,
   memberList: []
-}); // para hacerlo inmutable copiamos memberList en state con destructuring
+});
