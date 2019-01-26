@@ -14,7 +14,7 @@ class MemberAPI {
     return fetch(gitHubMembersUrl, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer fb35e344a7a29bdb3946632181e8dc4ba2eb42b6"
+        Authorization: "Bearer d16e8ad2333e3f7049734125761ce0424cda5d49"
       }
     })
       .then(response => this.checkStatus(response))
@@ -37,7 +37,11 @@ class MemberAPI {
 
   private processPages(response: Response): Promise<Response> {
     let linkHeader = parse(response.headers.get("Link"));
-    this.pagesCount = linkHeader["last"] == undefined ? this.pagesCount : linkHeader["last"].page;
+    if (linkHeader == undefined) {
+      this.pagesCount = 0;
+    } else {
+      this.pagesCount = linkHeader["last"] == undefined ? this.pagesCount : linkHeader["last"].page;
+    }
 
     return Promise.resolve(response);
   }

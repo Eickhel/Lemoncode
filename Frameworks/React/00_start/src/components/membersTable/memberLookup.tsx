@@ -1,6 +1,7 @@
 import * as React from "react";
+import classNames from "classnames";
 import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, MenuItem } from "@material-ui/core";
 
 const styles = theme =>
   createStyles({
@@ -9,13 +10,15 @@ const styles = theme =>
       maxWidth: 360,
       backgroundColor: theme.palette.background.paper
     },
-    inline: {
-      display: "inline"
-    },
     textField: {
-      margin: "8px",
-      width: "400px",
-      display: "block"
+      marginRight: "8px",
+      width: "250px"
+    },
+    pageField: {
+      width: "120px"
+    },
+    menu: {
+      width: 200
     },
     button: {
       margin: theme.spacing.unit
@@ -25,17 +28,19 @@ const styles = theme =>
 interface Props extends WithStyles<typeof styles> {
   loadOrganization: (orgName: string) => void;
   resetOrganization: () => void;
+  setPageLimit: (pageLimit: number) => void;
 }
 
 interface State {
   organizationName: string;
   buttonDisabled: boolean;
+  pageLimit: number;
 }
 
 class MemberLookup extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { organizationName: "lemoncode", buttonDisabled: false };
+    this.state = { organizationName: "lemoncode", pageLimit: 5, buttonDisabled: false };
   }
 
   loadOrganization = () => {
@@ -51,8 +56,21 @@ class MemberLookup extends React.Component<Props, State> {
     this.setState({ organizationName: e.target.value, buttonDisabled: !(e.target.value.length > 0) });
   };
 
+  setPageLimit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+    this.setState({ pageLimit: value });
+    this.props.setPageLimit(value);
+  };
+
   public render() {
     const { classes } = this.props;
+
+    const pages = [
+      { value: 5, label: "5" },
+      { value: 10, label: "10" },
+      { value: 15, label: "15" },
+      { value: 20, label: "20" }
+    ];
 
     return (
       <>
@@ -64,27 +82,48 @@ class MemberLookup extends React.Component<Props, State> {
           onChange={this.setOrganizationName}
           margin="normal"
           InputLabelProps={{ shrink: true }}
+          variant="outlined"
         />
-        <Button
-          size="small"
-          variant="contained"
-          color="primary"
-          onClick={this.loadOrganization}
-          className={classes.button}
-          disabled={this.state.buttonDisabled}
+        <TextField
+          id="pageLimit"
+          select
+          label="Rows per page"
+          className={classNames(classes.textField, classes.pageField)}
+          SelectProps={{ MenuProps: { className: classes.menu } }}
+          value={this.state.pageLimit}
+          onChange={this.setPageLimit}
+          margin="normal"
+          InputLabelProps={{ shrink: true }}
+          variant="outlined"
         >
-          Load
-        </Button>
-        <Button
-          size="small"
-          variant="contained"
-          color="secondary"
-          onClick={this.resetOrganizationName}
-          className={classes.button}
-          disabled={this.state.buttonDisabled}
-        >
-          Reset
-        </Button>
+          {pages.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        <div>
+          <Button
+            size="small"
+            variant="contained"
+            color="primary"
+            onClick={this.loadOrganization}
+            className={classes.button}
+            disabled={this.state.buttonDisabled}
+          >
+            Load
+          </Button>
+          <Button
+            size="small"
+            variant="contained"
+            color="secondary"
+            onClick={this.resetOrganizationName}
+            className={classes.button}
+            disabled={this.state.buttonDisabled}
+          >
+            Reset
+          </Button>
+        </div>
       </>
     );
   }

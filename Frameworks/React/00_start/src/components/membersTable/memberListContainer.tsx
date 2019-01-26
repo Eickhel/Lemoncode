@@ -32,6 +32,10 @@ export class MembersListContainer extends React.Component<Props, State> {
     this.setState({ apiResponse: createDefaultApiResponse() });
   };
 
+  setPageLimit = (pageLimit: number) => {
+    this.pageLimit = pageLimit;
+  };
+
   handlePaging = (offset: number) => {
     this.currentOffset = offset;
     this.loadMembers();
@@ -48,7 +52,11 @@ export class MembersListContainer extends React.Component<Props, State> {
   public render() {
     return (
       <>
-        <MemberLookupComponent loadOrganization={this.loadOrganization} resetOrganization={this.resetOrganization} />
+        <MemberLookupComponent
+          loadOrganization={this.loadOrganization}
+          resetOrganization={this.resetOrganization}
+          setPageLimit={this.setPageLimit}
+        />
         <MemberListComponent
           pageLimit={this.pageLimit}
           currentOffset={this.currentOffset}
