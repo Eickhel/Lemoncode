@@ -1,13 +1,13 @@
-import * as React from 'react';
-import { withStyles, createStyles, WithStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
-import { MembersComponent } from './components';
+import * as React from "react";
+import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { MembersListContainer } from "./components";
 
 const styles = theme =>
   createStyles({
     card: {
       maxWidth: 400,
-      margin: '0 auto'
+      margin: "0 auto"
     },
     toolbar: theme.mixins.toolbar,
     content: {
@@ -28,9 +28,9 @@ export class AppForm extends React.Component<Props> {
 
     return (
       <>
-        <AppBar position='fixed'>
+        <AppBar position="fixed">
           <Toolbar>
-            <Typography variant='h6' color='inherit'>
+            <Typography variant="h6" color="inherit">
               Github members directory
             </Typography>
           </Toolbar>
@@ -38,7 +38,7 @@ export class AppForm extends React.Component<Props> {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Typography paragraph>Use this page to browse public Github's organizations members.</Typography>
-          <MembersComponent />
+          <MembersListContainer />
         </main>
       </>
     );

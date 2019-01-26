@@ -1,19 +1,32 @@
-import {MemberEntity, createDefaultMemberEntity } from '../model/member';
+import { MemberEntity, ApiResponse, createDefaultApiResponse } from "../model/member";
+import parse from "parse-link-header";
 
 class MemberAPI {
+  public pagesCount: number = 0;
 
-  // Just return a copy of the mock data
-  getAllMembers(organizationName : string) : Promise<MemberEntity[]> {
-    const gitHubMembersUrl : string = `https://api.github.com/orgs/${organizationName}/members`;
+  getAllMembers(organizationName: string, pageLimit: number, offset: number): Promise<ApiResponse> {
+    let gitHubMembersUrl: string = `https://api.github.com/orgs/${organizationName}/members?per_page=${pageLimit}`;
 
-    return fetch(gitHubMembersUrl)
-    .then((response) => this.checkStatus(response))
-    .then((response) => this.parseJSON(response))
-    .then((data) => this.resolveMembers(data))
-    .catch(() => {return Promise.resolve([])})
+    if (offset > 0) {
+      gitHubMembersUrl = gitHubMembersUrl + `&page=${offset / pageLimit + 1}`;
     }
 
-  private checkStatus(response : Response) : Promise<Response> {
+    return fetch(gitHubMembersUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer fb35e344a7a29bdb3946632181e8dc4ba2eb42b6"
+      }
+    })
+      .then(response => this.checkStatus(response))
+      .then(response => this.processPages(response))
+      .then(response => this.parseJSON(response))
+      .then(data => this.resolveMembers(data))
+      .catch(() => {
+        return Promise.resolve(createDefaultApiResponse());
+      });
+  }
+
+  private checkStatus(response: Response): Promise<Response> {
     if (response.status >= 200 && response.status < 300) {
       return Promise.resolve(response);
     } else {
@@ -22,25 +35,26 @@ class MemberAPI {
     }
   }
 
-  private parseJSON(response : Response) : any {
+  private processPages(response: Response): Promise<Response> {
+    let linkHeader = parse(response.headers.get("Link"));
+    this.pagesCount = linkHeader["last"] == undefined ? this.pagesCount : linkHeader["last"].page;
+
+    return Promise.resolve(response);
+  }
+
+  private parseJSON(response: Response): any {
     return response.json();
   }
 
-  private resolveMembers (data : any) : Promise<MemberEntity[]> {
+  private resolveMembers(data: any): Promise<ApiResponse> {
+    const apiResponse: ApiResponse = createDefaultApiResponse();
 
-    const members = data.map((gitHubMember) => {
-      var member : MemberEntity = createDefaultMemberEntity();
-
-      member.id = gitHubMember.id;
-      member.login = gitHubMember.login;
-      member.avatar_url = gitHubMember.avatar_url;
-      member.url = gitHubMember.html_url;
-
-      return member;
+    apiResponse.pagesCount = this.pagesCount;
+    apiResponse.members = data.map((gitHubMember: MemberEntity) => {
+      return { ...gitHubMember };
     });
 
-
-    return Promise.resolve(members);
+    return Promise.resolve(apiResponse);
   }
 }
 
