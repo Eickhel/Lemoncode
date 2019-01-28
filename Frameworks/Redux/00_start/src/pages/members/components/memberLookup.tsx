@@ -1,7 +1,7 @@
-import * as React from "react";
+import { Button, MenuItem, TextField } from "@material-ui/core";
+import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
-import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
-import { Button, TextField, MenuItem } from "@material-ui/core";
+import * as React from "react";
 
 const styles = theme =>
   createStyles({
@@ -28,7 +28,6 @@ const styles = theme =>
 interface Props extends WithStyles<typeof styles> {
   loadOrganization: (orgName: string, pageLimit: number, offset: number) => void;
   resetOrganization: () => void;
-  setPageLimit: (pageLimit: number) => void;
 }
 
 interface State {
@@ -59,7 +58,6 @@ class MemberLookup extends React.Component<Props, State> {
   setPageLimit = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
     this.setState({ pageLimit: value });
-    this.props.setPageLimit(value);
   };
 
   public render() {

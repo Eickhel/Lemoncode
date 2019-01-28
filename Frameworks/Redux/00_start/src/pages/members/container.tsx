@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchMemberListRequestStart, clearMemberListRequestStart } from "../../actions";
+import { clearMemberListRequestStart, fetchMemberListRequestStart } from "../../actions";
 import { State } from "../../reducers";
 import { MemberListPage } from "./page";
 import { getMemberListVM } from "./selectors";
