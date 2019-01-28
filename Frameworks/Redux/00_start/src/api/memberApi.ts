@@ -1,42 +1,65 @@
-import { MemberEntity } from "./model";
+import { MemberEntity, ApiResponse, createDefaultApiResponse } from "./model/member";
+import parse from "parse-link-header";
 
-interface Props {
-  organization: string;
+class MemberAPI {
+  public pagesCount: number = 0;
+
+  getAllMembers(organizationName: string, pageLimit: number, offset: number): Promise<ApiResponse> {
+    let gitHubMembersUrl: string = `https://api.github.com/orgs/${organizationName}/members?per_page=${pageLimit}`;
+
+    if (offset > 0) {
+      gitHubMembersUrl = gitHubMembersUrl + `&page=${offset / pageLimit + 1}`;
+    }
+
+    return fetch(gitHubMembersUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer 8180bb19f0cc7cc4448e6c22cb1c7e8fea37e4be"
+      }
+    })
+      .then(response => this.checkStatus(response))
+      .then(response => this.processPages(response))
+      .then(response => this.parseJSON(response))
+      .then(data => this.resolveMembers(data))
+      .catch(() => {
+        return Promise.resolve(createDefaultApiResponse());
+      });
+  }
+
+  private checkStatus(response: Response): Promise<Response> {
+    if (response.status >= 200 && response.status < 300) {
+      return Promise.resolve(response);
+    } else {
+      let error = new Error(response.statusText);
+      throw error;
+    }
+  }
+
+  private processPages(response: Response): Promise<Response> {
+    let linkHeader = parse(response.headers.get("Link"));
+    if (linkHeader == undefined) {
+      this.pagesCount = 0;
+    } else {
+      this.pagesCount = linkHeader["last"] == undefined ? this.pagesCount : linkHeader["last"].page;
+    }
+
+    return Promise.resolve(response);
+  }
+
+  private parseJSON(response: Response): any {
+    return response.json();
+  }
+
+  private resolveMembers(data: any): Promise<ApiResponse> {
+    const apiResponse: ApiResponse = createDefaultApiResponse();
+
+    apiResponse.pagesCount = this.pagesCount;
+    apiResponse.members = data.map((gitHubMember: MemberEntity) => {
+      return { ...gitHubMember };
+    });
+
+    return Promise.resolve(apiResponse);
+  }
 }
 
-const baseRoot = "https://api.github.com/orgs/";
-
-export const fetchMemberList = (organization: string): Promise<MemberEntity[]> => {
-  const requestURL = `${baseRoot}${organization}/members`;
-
-  return fetch(requestURL)
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(resolveMembers)
-    .catch(returnEmpty);
-};
-
-const checkStatus = (response: Response): Response => {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  } else {
-    let error = new Error(response.statusText);
-    throw error;
-  }
-};
-
-const parseJSON = (response: Response): any => {
-  return response.json();
-};
-
-const resolveMembers = (data: any): MemberEntity[] => {
-  const members = data.map(
-    ({ id, login, avatar_url, html_url }) => ({ id, login, avatar_url, html_url } as MemberEntity)
-  );
-
-  return members;
-};
-
-const returnEmpty = (): MemberEntity[] => {
-  return [];
-};
+export const memberAPI = new MemberAPI();

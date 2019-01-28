@@ -5,12 +5,12 @@ import { MemberListPage } from "./page";
 import { getMemberListVM } from "./selectors";
 
 const mapStateToProps = (state: State) => ({
-  memberList: getMemberListVM(state)
+  apiResponse: getMemberListVM(state)
 });
 
-const mapDispatchToProps = (dispatch)=> ({
-  fetchMemberList: (organization: string) => {
-    dispatch(fetchMemberListRequestStart(organization));
+const mapDispatchToProps = dispatch => ({
+  fetchMemberList: (organization: string, pageLimit: number, offset: number) => {
+    dispatch(fetchMemberListRequestStart(organization, pageLimit, offset));
   },
   clearMemberList: () => {
     dispatch(clearMemberListRequestStart());

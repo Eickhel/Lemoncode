@@ -1,1 +1,3 @@
-export * from "./memberTable";
+export * from "./memberList";
+
+export * from "./memberLookup";

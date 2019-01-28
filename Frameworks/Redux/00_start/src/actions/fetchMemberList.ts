@@ -1,16 +1,16 @@
-import { MemberEntity } from "../api/model";
+import { ApiResponse } from "../api/model";
 import { actionDefs } from "../const";
-import { fetchMemberList } from "../api";
+import { memberAPI } from "../api";
 
-export const fetchMemberListRequestStart = (organization: string) => dispatcher => {
-  const promise = fetchMemberList(organization);
+export const fetchMemberListRequestStart = (organization: string, pageLimit: number, offset: number) => dispatcher => {
+  const promise = memberAPI.getAllMembers(organization, pageLimit, offset);
 
-  promise.then(memberList => {
-    dispatcher(fetchMemberListCompleted(memberList));
+  promise.then(apiResponse => {
+    dispatcher(fetchMemberListCompleted(apiResponse));
   });
 };
 
-const fetchMemberListCompleted = (memberList: MemberEntity[]) => ({
+const fetchMemberListCompleted = (apiResponse: ApiResponse) => ({
   type: actionDefs.FETCH_MEMBERS_COMPLETED,
-  payload: memberList
+  payload: apiResponse
 });

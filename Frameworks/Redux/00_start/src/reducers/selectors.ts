@@ -1,9 +1,9 @@
 import { createSelector } from "reselect";
 import { State } from "./index";
 
-export const getMemberListReducer = (state: State) => state.memberListReducer;
+export const getApiResponseReducer = (state: State) => state.apiResponseReducer;
 
 export const getMemberList = createSelector(
-  getMemberListReducer,
-  memberListReducer => memberListReducer.memberList
+  getApiResponseReducer,
+  memberListReducer => memberListReducer.apiResponse
 );
