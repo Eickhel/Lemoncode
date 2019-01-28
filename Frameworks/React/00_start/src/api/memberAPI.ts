@@ -11,12 +11,7 @@ class MemberAPI {
       gitHubMembersUrl = gitHubMembersUrl + `&page=${offset / pageLimit + 1}`;
     }
 
-    return fetch(gitHubMembersUrl, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer d16e8ad2333e3f7049734125761ce0424cda5d49"
-      }
-    })
+    return fetch(gitHubMembersUrl)
       .then(response => this.checkStatus(response))
       .then(response => this.processPages(response))
       .then(response => this.parseJSON(response))
