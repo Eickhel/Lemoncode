@@ -1,33 +1,70 @@
 <template>
-  <v-sheet :elevation="2" :class="$style.sheetStyle">
-    <v-list>
-      <v-list-tile :key="member.id" avatar @click="openURL(member.html_url)">
-        <v-list-tile-avatar>
-          <img :src="member.avatar_url">
-        </v-list-tile-avatar>
+  <div>
+    <div :key="member.id" v-for="member in apiResponse.members">
+      <v-sheet :elevation="2" :class="$style.sheetStyle">
+        <v-list>
+          <v-list-tile :key="member.id" avatar @click="openURL(member.html_url)">
+            <v-list-tile-avatar>
+              <img :src="member.avatar_url">
+            </v-list-tile-avatar>
 
-        <v-list-tile-content>
-          <v-list-tile-title v-html="member.login"></v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
-    </v-list>
-  </v-sheet>
+            <v-list-tile-content>
+              <v-list-tile-title v-html="member.login"></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-sheet>
+    </div>
+    <div :class="$style.pagination">
+      <v-pagination
+        v-if="this.apiResponse.members.length > 0"
+        :class="$style.pagination"
+        :value="page"
+        :length="pagesCount"
+        :total-visible="7"
+        @input="handlePaging"
+      ></v-pagination>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
-import { Member } from "../../model/member";
-
-interface Props {
-  member: PropOptions<Member>;
-}
+import {
+  ApiResponse,
+  createDefaultApiResponse,
+  MemberEntity
+} from "../../model/member";
 
 export default Vue.extend({
   name: "MemberRow",
-  props: { member: {} } as Props,
+  props: {
+    apiResponse: {} as PropOptions<ApiResponse>,
+    method: { type: Function },
+    offset: Number
+  },
+  data: function() {
+    return {
+      page: 1
+    };
+  },
+  computed: {
+    pagesCount: function() {
+      return Number(this.apiResponse.pagesCount);
+    }
+  },
   methods: {
     openURL: function(url: string) {
       window.open(url);
+    },
+    handlePaging: function(page: number) {
+      this.page = page;
+      this.$emit("handle-paging", page);
+    }
+  },
+  watch: {
+    offset: function(val) {
+      this.page = val == 0 ? 1 : this.page;
     }
   }
 });
@@ -41,8 +78,10 @@ export default Vue.extend({
   margin: 10px 0px 0px 16px;
 }
 
-.column {
-  width: 33.33%;
+.pagination {
+  max-width: 435px;
+  padding: 10px 16px;
   text-align: center;
 }
 </style>
+
