@@ -15,9 +15,10 @@
         </v-list>
       </v-sheet>
     </div>
+
     <div :class="$style.pagination">
       <v-pagination
-        v-if="this.apiResponse.members.length > 0"
+        v-if="this.apiResponse.pagesCount > 1"
         :class="$style.pagination"
         :value="page"
         :length="pagesCount"
@@ -30,18 +31,15 @@
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
-import {
-  ApiResponse,
-  createDefaultApiResponse,
-  MemberEntity
-} from "../../model/member";
+import { ApiResponse } from "../../model/member";
 
 export default Vue.extend({
-  name: "MemberRow",
+  name: "ListComponent",
   props: {
     apiResponse: {} as PropOptions<ApiResponse>,
-    method: { type: Function },
-    offset: Number
+    offset: Number,
+    pageLimit: Number,
+    method: { type: Function }
   },
   data: function() {
     return {
