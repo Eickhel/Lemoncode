@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ApiResponse, createDefaultApiResponse } from "../model/member";
-import { memberAPI } from "/../api/memberAPI";
+import { memberAPI } from "../api/memberAPI";
 import { MemberLookupComponent } from "./components/memberLookup";
 import { MemberListComponent } from "./components/memberList";
 

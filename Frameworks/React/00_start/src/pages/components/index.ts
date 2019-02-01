@@ -1,1 +1,3 @@
-export * from './memberListContainer';
+export * from "./memberLookup";
+
+export * from "./memberList";

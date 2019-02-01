@@ -1,7 +1,7 @@
 import * as React from "react";
 import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
-import { MembersListContainer } from "./components";
+import { MembersListContainer } from "./pages";
 
 const styles = theme =>
   createStyles({

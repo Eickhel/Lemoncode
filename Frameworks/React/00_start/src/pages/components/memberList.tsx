@@ -16,6 +16,9 @@ const styles = theme => ({
     width: "100%",
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper
+  },
+  pagination: {
+    align: "center"
   }
 });
 
@@ -45,8 +48,9 @@ const MemberList = (props: Props) => {
           </Paper>
         ))}
       </List>
-      {props.apiResponse.members.length > 0 && (
+      {props.apiResponse.pagesCount > 0 && (
         <Pagination
+          className={props.classes.pagination}
           limit={props.pageLimit}
           offset={props.currentOffset}
           total={props.apiResponse.pagesCount * props.pageLimit}
