@@ -8,7 +8,7 @@ class MemberAPI {
     let gitHubMembersUrl: string = `https://api.github.com/orgs/${organizationName}/members?per_page=${pageLimit}`;
 
     if (offset > 0) {
-      gitHubMembersUrl = gitHubMembersUrl + `&page=${offset / pageLimit + 1}`;
+      gitHubMembersUrl = gitHubMembersUrl + `&page=${offset + 1}`;
     }
 
     return fetch(gitHubMembersUrl)

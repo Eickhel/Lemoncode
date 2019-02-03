@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 
-import { MemberEntity } from "../models/member.model";
-import { MembersApiService } from "../members-api.service";
+import { createDefaultApiResponse, ApiResponse } from "../../../models/member.model";
+import { MembersApiService } from "../../../api/members-api.service";
+import { MatSelectChange } from "@angular/material";
 
 @Component({
   selector: "app-members-table",
@@ -9,17 +10,36 @@ import { MembersApiService } from "../members-api.service";
   styleUrls: ["./members-table.component.css"]
 })
 export class MembersTableComponent {
-  members: MemberEntity[];
+  apiResponse: ApiResponse = createDefaultApiResponse();
   orgName = "lemoncode";
+  pageLimit = 5;
+  offSet = 0;
 
   constructor(private membersApi: MembersApiService) {}
 
   loadMembers() {
-    this.membersApi.getAllMembers(this.orgName).subscribe(ms => (this.members = ms));
+    this.apiResponse = this.membersApi.getAllMembers(this.orgName, this.pageLimit, this.offSet);
+  }
+
+  loadOrganization() {
+    this.offSet = 0;
+    this.loadMembers();
   }
 
   resetMembers() {
     this.orgName = "";
-    this.members = [];
+    this.offSet = 0;
+    this.pageLimit = 5;
+    this.apiResponse = createDefaultApiResponse();
+  }
+
+  handlePageLimitChange(change: MatSelectChange) {
+    const value = change.value as string;
+    this.pageLimit = Number(value.replace("pageLimit", ""));
+  }
+
+  handlePaging(pageIndex: number) {
+    this.offSet = pageIndex;
+    this.loadMembers();
   }
 }

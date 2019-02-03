@@ -3,8 +3,26 @@
   <mat-form-field class="searchField">
     <input matInput type="text" placeholder="Organization name" [(ngModel)]="orgName" />
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="loadMembers()">LOAD</button>
-  <button mat-raised-button color="warn" (click)="resetMembers()" class="resetButtonPadding">RESET</button>
+  <mat-form-field>
+    <mat-select
+      placeholder="Rows per page"
+      [(value)]="pageLimitOption"
+      (selectionChange)="handlePageLimitChange($event)"
+    >
+      <mat-option value="pageLimit5">5</mat-option>
+      <mat-option value="pageLimit10">10</mat-option>
+      <mat-option value="pageLimit15">15</mat-option>
+      <mat-option value="pageLimit20">20</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="loadOrganization()">LOAD</button>
+    <button mat-raised-button color="warn" (click)="resetMembers()" class="resetButtonPadding">RESET</button>
+  </div>
 </div>
 
-<app-member-row [member]="member" *ngFor="let member of members"></app-member-row>
+<app-member-row
+  [apiResponse]="apiResponse"
+  [pageLimit]="pageLimit"
+  (handlePagingEmitter)="handlePaging($event)"
+></app-member-row>

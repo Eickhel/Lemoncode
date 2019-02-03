@@ -1,8 +1,25 @@
-<mat-list>
-  <mat-card class="memberCard" (click)="openURL()">
-    <mat-list-item>
-      <img matListAvatar src="{{ member.avatar_url }}" alt="{{ member.login }}" />
-      <h3 matLine>{{ member.login }}</h3>
-    </mat-list-item>
-  </mat-card>
-</mat-list>
+<div
+  *ngFor="
+    let member of (apiResponse.members
+      | paginate: { itemsPerPage: pageLimit, currentPage: page, totalItems: apiResponse.pagesCount * pageLimit })
+  "
+>
+  <mat-list>
+    <mat-card class="memberCard" (click)="openURL(member.html_url)">
+      <mat-list-item>
+        <img matListAvatar src="{{ member.avatar_url }}" alt="{{ member.login }}" />
+        <h3 matLine>{{ member.login }}</h3>
+      </mat-list-item>
+    </mat-card>
+  </mat-list>
+</div>
+<!-- <div class="paginator">
+  <mat-paginator
+    [hidePageSize]="true"
+    [length]="apiResponse.pagesCount * pageLimit"
+    (page)="handlePaging($event)"
+    [pageSize]="pageLimit"
+  >
+  </mat-paginator>
+</div> -->
+<pagination-controls (pageChange)="handlePaging($event)" previousLabel="" nextLabel=""></pagination-controls>

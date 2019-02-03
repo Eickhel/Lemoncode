@@ -1,6 +1,12 @@
 .memberCard {
   max-width: 300px;
+  padding: 8px;
   margin-left: 20px;
-  margin-bottom: 5px;
   cursor: pointer;
+}
+
+.paginator {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
 }

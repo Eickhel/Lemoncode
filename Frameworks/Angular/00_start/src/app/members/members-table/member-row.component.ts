@@ -1,5 +1,5 @@
-import { Component, Input } from "@angular/core";
-import { MemberEntity } from "../models/member.model";
+import { Component, Input, EventEmitter, Output } from "@angular/core";
+import { ApiResponse } from "../../../models/member.model";
 
 @Component({
   selector: "app-member-row",
@@ -7,9 +7,16 @@ import { MemberEntity } from "../models/member.model";
   styleUrls: ["./member-row.component.css"]
 })
 export class MemberRowComponent {
-  @Input() member: MemberEntity;
+  @Input() apiResponse: ApiResponse;
+  @Input() pageLimit: number;
+  @Output() handlePagingEmitter = new EventEmitter<number>();
+  page: number = 1;
 
-  openURL() {
-    window.open(this.member.html_url);
+  openURL(url: string) {
+    window.open(url);
+  }
+
+  handlePaging(event: number) {
+    this.handlePagingEmitter.emit(event);
   }
 }
