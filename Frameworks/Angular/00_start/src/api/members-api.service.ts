@@ -10,6 +10,7 @@ import parse from "parse-link-header";
 })
 export class MembersApiService {
   constructor(private http: HttpClient) {}
+  public pagesCount: number = 0;
 
   getAllMembers(organizationName: string, pageLimit: number, offset: number) {
     let gitHubMembersUrl: string = `https://api.github.com/orgs/${organizationName}/members?per_page=${pageLimit}`;
@@ -23,11 +24,12 @@ export class MembersApiService {
       let linkHeader = parse(response.headers.get("Link"));
 
       if (linkHeader == undefined) {
-        apiResponse.pagesCount = 0;
+        this.pagesCount = 0;
       } else {
-        apiResponse.pagesCount = linkHeader["last"] == undefined ? apiResponse.pagesCount : linkHeader["last"].page;
+        this.pagesCount = linkHeader["last"] == undefined ? this.pagesCount : linkHeader["last"].page;
       }
 
+      apiResponse.pagesCount = this.pagesCount;
       apiResponse.members = response.body;
     });
 
