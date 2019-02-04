@@ -13,13 +13,12 @@
     </mat-card>
   </mat-list>
 </div>
-<!-- <div class="paginator">
-  <mat-paginator
-    [hidePageSize]="true"
-    [length]="apiResponse.pagesCount * pageLimit"
-    (page)="handlePaging($event)"
-    [pageSize]="pageLimit"
-  >
-  </mat-paginator>
-</div> -->
-<pagination-controls (pageChange)="handlePaging($event)" previousLabel="" nextLabel=""></pagination-controls>
+<div class="paginatorBlock" *ngIf="apiResponse.pagesCount > 1">
+  <pagination-controls
+    class="paginator"
+    (pageChange)="handlePaging($event)"
+    previousLabel=""
+    nextLabel=""
+    maxSize="5"
+  ></pagination-controls>
+</div>

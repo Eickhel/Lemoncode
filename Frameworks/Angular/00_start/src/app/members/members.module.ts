@@ -9,7 +9,6 @@ import {
   MatButtonModule,
   MatListModule,
   MatCardModule,
-  MatPaginatorModule,
   MatSelectModule
 } from "@angular/material";
 import { NgxPaginationModule } from "ngx-pagination"; // <-- import the module
@@ -24,7 +23,6 @@ import { NgxPaginationModule } from "ngx-pagination"; // <-- import the module
     MatListModule,
     MatCardModule,
     FormsModule,
-    MatPaginatorModule,
     MatSelectModule,
     NgxPaginationModule
   ],

@@ -17,6 +17,7 @@ export class MemberRowComponent {
   }
 
   handlePaging(event: number) {
+    this.page = event;
     this.handlePagingEmitter.emit(event);
   }
 }

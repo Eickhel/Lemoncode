@@ -13,6 +13,7 @@ export class MembersTableComponent {
   apiResponse: ApiResponse = createDefaultApiResponse();
   orgName = "lemoncode";
   pageLimit = 5;
+  pageLimitOption = "pageLimit5";
   offSet = 0;
 
   constructor(private membersApi: MembersApiService) {}
