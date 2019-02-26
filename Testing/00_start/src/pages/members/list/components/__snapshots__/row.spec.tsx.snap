@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages/members/list/components/row tests should render as expected when passing required properties 1`] = `
+<tr>
+  <td>
+    <img
+      src="https://avatars1.githubusercontent.com/u/14540103?v=4"
+      style={
+        Object {
+          "maxWidth": "10rem",
+        }
+      }
+    />
+  </td>
+  <td>
+    <span>
+      14540103
+    </span>
+  </td>
+  <td>
+    <span>
+      antonio06
+    </span>
+  </td>
+</tr>
+`;

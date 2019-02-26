@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages/members/list/components/body tests should render as expected when passing required properties 1`] = `
+<tbody>
+  <Component
+    key="14540103"
+    member={
+      Object {
+        "avatarUrl": "https://avatars1.githubusercontent.com/u/14540103?v=4",
+        "id": 14540103,
+        "name": "antonio06",
+      }
+    }
+  />
+  <Component
+    key="1457912"
+    member={
+      Object {
+        "avatarUrl": "https://avatars1.githubusercontent.com/u/1457912?v=4",
+        "id": 1457912,
+        "name": "brauliodiez",
+      }
+    }
+  />
+  <Component
+    key="13205689"
+    member={
+      Object {
+        "avatarUrl": "https://avatars1.githubusercontent.com/u/13205689?v=4",
+        "id": 13205689,
+        "name": "crsanti",
+      }
+    }
+  />
+</tbody>
+`;
