@@ -17,7 +17,9 @@ describe("members/list/reducers/membersReducer tests", () => {
 
   it("should return same state without mutate it when passing state and some action type", () => {
     // Arrange
-    const state: MembersState = [{ id: 1, login: "test login", avatar_url: "test avatar_url" }];
+    const state: MembersState = [
+      { id: 14540103, login: "antonio06", avatar_url: "https://avatars1.githubusercontent.com/u/14540103?v=4" }
+    ];
     const action = { type: "some type" };
     deepFreeze(state);
 
@@ -25,17 +27,20 @@ describe("members/list/reducers/membersReducer tests", () => {
     const nextState = membersReducer(state, action);
 
     // Assert
-    expect(nextState).toEqual([{ id: 1, login: "test login", avatar_url: "test avatar_url" }]);
+    expect(nextState).toEqual([
+      { id: 14540103, login: "antonio06", avatar_url: "https://avatars1.githubusercontent.com/u/14540103?v=4" }
+    ]);
   });
 
-  it(`should return updated state without mutate it
-  when passing state, actionIds.UPDATE_MEMBERS action type and members payload`, () => {
+  it(`should return updated state without mutate it when passing state, actionIds.UPDATE_MEMBERS action type and members payload`, () => {
     // Arrange
-    const state: MembersState = [{ id: 1, login: "test login", avatar_url: "test avatar_url" }];
+    const state: MembersState = [
+      { id: 14540103, login: "antonio06", avatar_url: "https://avatars1.githubusercontent.com/u/14540103?v=4" }
+    ];
 
     const payload = [
-      { id: 2, login: "test login 2", avatar_url: "test avatar_url 2" },
-      { id: 3, login: "test login 3", avatar_url: "test avatar_url 3" }
+      { id: 1457912, login: "brauliodiez", avatar_url: "https://avatars1.githubusercontent.com/u/1457912?v=4" },
+      { id: 13205689, login: "crsanti", avatar_url: "https://avatars1.githubusercontent.com/u/13205689?v=4" }
     ];
 
     const action = {

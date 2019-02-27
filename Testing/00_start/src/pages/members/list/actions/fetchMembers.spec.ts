@@ -27,9 +27,9 @@ describe("members/list/actions/fetchMembers tests", () => {
     // Arrange
     const members: Member[] = [
       {
-        id: 1,
-        login: "test login",
-        avatar_url: "test url"
+        id: 14540103,
+        login: "antonio06",
+        avatar_url: "https://avatars1.githubusercontent.com/u/14540103?v=4"
       }
     ];
 

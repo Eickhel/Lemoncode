@@ -41,9 +41,9 @@ describe("pages/members/list/mappers specs", () => {
       // Arrange
       const members: model.Member[] = [
         {
-          id: 1,
-          login: "test login",
-          avatar_url: "test avatar_url"
+          id: 14540103,
+          login: "antonio06",
+          avatar_url: "https://avatars1.githubusercontent.com/u/14540103?v=4"
         }
       ];
 
@@ -53,9 +53,9 @@ describe("pages/members/list/mappers specs", () => {
       // Assert
       const expectedResult: vm.Member[] = [
         {
-          id: 1,
-          name: "test login",
-          avatarUrl: "test avatar_url"
+          id: 14540103,
+          name: "antonio06",
+          avatarUrl: "https://avatars1.githubusercontent.com/u/14540103?v=4"
         }
       ];
       expect(result).toEqual(expectedResult);
@@ -65,14 +65,14 @@ describe("pages/members/list/mappers specs", () => {
       // Arrange
       const members: model.Member[] = [
         {
-          id: 1,
-          login: "test login 1",
-          avatar_url: "test avatar_url 1"
+          id: 14540103,
+          login: "antonio06",
+          avatar_url: "https://avatars1.githubusercontent.com/u/14540103?v=4"
         },
         {
-          id: 2,
-          login: "test login 2",
-          avatar_url: "test avatar_url 2"
+          id: 1457912,
+          login: "brauliodiez",
+          avatar_url: "https://avatars1.githubusercontent.com/u/1457912?v=4"
         }
       ];
 
@@ -82,14 +82,14 @@ describe("pages/members/list/mappers specs", () => {
       // Assert
       const expectedResult: vm.Member[] = [
         {
-          id: 1,
-          name: "test login 1",
-          avatarUrl: "test avatar_url 1"
+          id: 14540103,
+          name: "antonio06",
+          avatarUrl: "https://avatars1.githubusercontent.com/u/14540103?v=4"
         },
         {
-          id: 2,
-          name: "test login 2",
-          avatarUrl: "test avatar_url 2"
+          id: 1457912,
+          name: "brauliodiez",
+          avatarUrl: "https://avatars1.githubusercontent.com/u/1457912?v=4"
         }
       ];
       expect(result).toEqual(expectedResult);
