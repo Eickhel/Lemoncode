@@ -12,10 +12,24 @@
   "coveragePathIgnorePatterns": ["/node_modules/", "config/test"],
   "coverageThreshold": {
     "global": {
-      "branches": 60,
-      "functions": 70,
-      "lines": 80,
-      "statements": -10
+      "branches": 50,
+      "functions": 50,
+      "lines": 50,
+      "statements": 50
+    },
+    "./src/pages/members/list/components/": {
+      "branches": 40,
+      "statements": 40
+    },
+    "./src/pages/members/list/reducers/**/*.js": {
+      "statements": 90
+    },
+    "./src/rest-api/api/member.ts": {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
     }
-  }
+  },
+  "collectCoverageFrom": ["**/*.{ts,tsx}"]
 }

@@ -3,10 +3,11 @@ import { State } from "../reducers";
 import { loginRequest } from "./actions/loginRequest";
 import { updateLoginEntityField } from "./actions/updateLoginEntityField";
 import { LoginPage } from "./page";
+import { getLoginVM } from "./selectors";
 import { LoginEntity } from "./viewModel";
 
 const mapStateToProps = (state: State) => ({
-  loginEntity: state.login.loginEntity,
+  loginEntity: getLoginVM(state),
   loginFormErrors: state.login.loginFormErrors
 });
 
