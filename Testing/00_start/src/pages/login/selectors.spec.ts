@@ -20,8 +20,7 @@ describe("pages/login/selectors specs", () => {
   });
 
   describe("getLoginVM", () => {
-    it("should return the expected mapped member list", () => {
-      // Arrange
+    it("should return the expected mapped login info", () => {
       // Arrange
       const state = {
         login: { loginEntity: { login: "admin", password: "pass" } }
