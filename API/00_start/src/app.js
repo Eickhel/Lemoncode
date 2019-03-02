@@ -28,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
     event.stopPropagation();
     event.preventDefault();
     const car = retrieveCarFormEditCarForm();
-    axiosAPI.addCar(car)
+    axiosAPI
+      .addCar(car)
       .then(_ => {
         cleanTable("cars-table");
         return axiosAPI.getAllCars();
@@ -41,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fetch
   const buttonLoadCarsFetch = document.getElementById("loadCarsFetch");
   const buttonLoadCarFetch = document.getElementById("loadCarFetch");
+  const buttonAddCarFetch = document.getElementById("addCarFetch");
 
   buttonLoadCarsFetch.addEventListener("click", event => {
     event.stopPropagation();
@@ -62,9 +64,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  buttonAddCarFetch.addEventListener("click", event => {
+    event.stopPropagation();
+    event.preventDefault();
+    const car = retrieveCarFormEditCarForm();
+    fetchAPI
+      .addCar(car)
+      .then(_ => {
+        cleanTable("cars-table");
+        return fetchAPI.getAllCars();
+      })
+      .then(result => {
+        result.json().then(data => {
+          addCarRows(data, "cars-table");
+        });
+      });
+  });
+
   // XMLHttpRequest
   const buttonLoadCarsXHR = document.getElementById("loadCarsXHR");
   const buttonLoadCarXHR = document.getElementById("loadCarXHR");
+  const buttonAddCarXHR = document.getElementById("addCarXHR");
 
   buttonLoadCarsXHR.addEventListener("click", event => {
     event.stopPropagation();
@@ -82,4 +102,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  buttonAddCarXHR.addEventListener("click", event => {
+    event.stopPropagation();
+    event.preventDefault();
+    const car = retrieveCarFormEditCarForm();
+    xhrAPI
+      .addCar(car)
+      .then(_ => {
+        cleanTable("cars-table");
+        return xhrAPI.getAllCars();
+      })
+      .then(result => {
+        addCarRows(result, "cars-table");
+      });
+  });
 });

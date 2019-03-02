@@ -5,15 +5,15 @@ export const getAllCars = () => {
 };
 
 export const getCarById = id => {
-    return fetch(`${baseAPI.baseUrl}/api/cars/${id}`);
+  return fetch(`${baseAPI.baseUrl}/api/cars/${id}`);
 };
 
 export const addCar = car => {
-  return new Promise((resolve, _) => {
-    setTimeout(() => {
-      car["car_id"] = data.length + 1;
-      data.push(car);
-      resolve("ok"); // TODO: Check with browser
-    }, 500);
+  return fetch(`${baseAPI.baseUrl}/api/cars/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(car)
   });
 };
