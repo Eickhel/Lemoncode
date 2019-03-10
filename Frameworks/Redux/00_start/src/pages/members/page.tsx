@@ -8,20 +8,26 @@ interface Props {
   clearMemberList: () => void;
 }
 
-export class MemberListPage extends React.Component<Props> {
-  public pageLimit = 5;
-  public currentOffset = 0;
-  public currentOrgName = "";
+interface State {
+  pageLimit: number;
+  currentOffset: number;
+  currentOrgName: string;
+}
+
+export class MemberListPage extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { pageLimit: 5, currentOffset: 0, currentOrgName: "" };
+  }
 
   loadOrganization = (orgName: string, pageLimit: number) => {
-    this.currentOrgName = orgName;
-    this.pageLimit = pageLimit;
-    this.props.fetchMemberList(this.currentOrgName, this.pageLimit, this.currentOffset);
+    this.props.fetchMemberList(orgName, pageLimit, this.state.currentOffset);
+    this.setState({ currentOrgName: orgName, pageLimit: pageLimit });
   };
 
   handlePaging = (offset: number) => {
-    this.currentOffset = offset;
-    this.props.fetchMemberList(this.currentOrgName, this.pageLimit, this.currentOffset);
+    this.props.fetchMemberList(this.state.currentOrgName, this.state.pageLimit, offset);
+    this.setState({ currentOffset: offset });
   };
 
   public render() {
@@ -32,8 +38,8 @@ export class MemberListPage extends React.Component<Props> {
           resetOrganization={this.props.clearMemberList}
         />
         <MemberListComponent
-          pageLimit={this.pageLimit}
-          currentOffset={this.currentOffset}
+          pageLimit={this.state.pageLimit}
+          currentOffset={this.state.currentOffset}
           apiResponse={this.props.apiResponse}
           handlePaging={this.handlePaging}
         />
